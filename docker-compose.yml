@@ -9,9 +9,3 @@ services:
     command: python3 ./server.py
     expose:
       - '65432'
-
-#    build: .
-#    ports:
-#      - "8000:5000"
-#  redis:
-#    image: "redis:alpine"
