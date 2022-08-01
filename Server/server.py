@@ -1,10 +1,10 @@
 # echo-server.py
-
 import socket
 
 HOST = ""  # Standard loopback interface address (localhost)
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
+# with statement avoids having to call s.close()
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     s.bind((HOST, PORT))
@@ -17,6 +17,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if not data:
                 break
             conn.sendall(data)
-# close connection
-s.close()
-print("socket closed")

@@ -9,3 +9,4 @@ services:
     command: python3 ./server.py
     expose:
       - '65432'
+      - '21'
