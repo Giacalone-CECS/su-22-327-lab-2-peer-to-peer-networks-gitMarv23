@@ -11,8 +11,5 @@ RUN apk update && apk upgrade
 #yes to install python package
 RUN apk add python3
 
+# change work directory to app directory inside container
 WORKDIR /app
-#RUN apt install python3 -y
-
-# run an interactive shell within the container
-# CMD [ "/bin/sh" ]

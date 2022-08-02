@@ -2,11 +2,10 @@ version: "3.9"
 services:
   client:
     build: ./client/
-    command: sh -c "sleep 0.1s && python3 ./client.py"
+    command: sh -c 'sleep 1s && python3 ./client.py'
 
   server:
     build: ./Server/
-    command: sh -c "python3 ./server.py"
+    command: sh -c 'python3 ./server.py'
     expose:
       - '65432'
-      - '21'
