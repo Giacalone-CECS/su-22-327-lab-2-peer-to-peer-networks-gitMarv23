@@ -1,17 +1,6 @@
 version: "3.9"
 services:
-  client:
-    build: ./client/
-    command: sh -c "sleep 0.1s ; python3 ./client.py"
-
-  server:
-    build: ./Server/
-    command: python3 ./server.py
-    expose:
-      - '65432'
-
-#    build: .
-#    ports:
-#      - "8000:5000"
-#  redis:
-#    image: "redis:alpine"
+  node:
+    build: ./node
+    expose: 
+      - "8000"
