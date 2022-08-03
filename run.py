@@ -6,5 +6,4 @@ nodes = int(input())
 
 for i in range(1, (nodes + 1)):
     # run host command to launch multiple nodes
-    subprocess.run(["docker", "run", "-it", "su-22-327-lab-2-peer-to-peer-networks-gitmarv23_node"])
-    
+    subprocess.Popen(["docker", "run", "-it", "su-22-327-lab-2-peer-to-peer-networks-gitmarv23_node"])
