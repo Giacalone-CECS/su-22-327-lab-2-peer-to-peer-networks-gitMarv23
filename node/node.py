@@ -1,1 +1,1 @@
-print("script run success")
+print("script run success on start!")

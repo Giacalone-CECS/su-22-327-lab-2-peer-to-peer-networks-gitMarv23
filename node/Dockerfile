@@ -6,10 +6,8 @@ FROM alpine:latest
 COPY . /app
 
 # ensure packages are up to date via "cache busting"
-RUN apk update && apk upgrade
-
 # yes to install python package
-RUN apk add python3
+RUN apk update && apk upgrade && apk add python3 
 
 # set work directory to copied application directory
 WORKDIR /app
