@@ -3,4 +3,4 @@ services:
   node:
     build: ./node
     expose: 
-      - "8000"
+      - "80"
