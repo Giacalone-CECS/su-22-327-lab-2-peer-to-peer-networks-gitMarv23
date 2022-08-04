@@ -11,6 +11,3 @@ RUN apk update && apk upgrade && apk add python3
 
 # set work directory to copied application directory
 WORKDIR /home/lab2
-
-# run a shell on launch
-CMD ["sh"]
