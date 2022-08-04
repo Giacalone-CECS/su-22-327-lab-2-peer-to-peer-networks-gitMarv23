@@ -13,4 +13,4 @@ RUN apk update && apk upgrade && apk add python3
 WORKDIR /app
 
 # run a shell on launch
-CMD ["sh"]
+CMD ["sh", "-c", "python3", "./test.py"]
