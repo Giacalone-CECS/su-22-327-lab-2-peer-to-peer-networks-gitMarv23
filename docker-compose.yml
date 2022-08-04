@@ -1,6 +1,2 @@
 version: "3.9"
 services:
-  node:
-    build: ./node
-    expose: 
-      - "8000"
