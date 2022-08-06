@@ -1,18 +1,6 @@
 import socket
 from threading import Thread
 import time
-# from ping3 import ping
-# #scanning for ip address
-#
-# import os
-# hostname = "127.0.0.1"
-# response = os.system("ping -c 1 " + hostname)
-#
-# #and then check the response...
-# if response == 0:
-#     print (hostname, 'is up!')
-# else:
-#     print (hostname, 'is down!')
 
 def server():
     HOST = '127.0.0.1' # ip address to run through eth0 port to docker
@@ -33,11 +21,6 @@ def server():
                     break
                 conn.sendall(data)
 
-
-
-
-
-
 def client ():
     Host = "127.0.0.1"
     Port = 80 #The port that the server uses
@@ -54,6 +37,3 @@ Thread(target = server).start()
 time.sleep(0.5)
 
 Thread(target = client).start()
-
-
-
