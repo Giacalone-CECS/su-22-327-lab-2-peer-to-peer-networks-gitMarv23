@@ -1,6 +1,6 @@
 import subprocess
 
-print("How many nodes do you want?") # prompt for number of desired nodes in the network
+print("Enter the number of desired nodes for your network:") # prompt for number of desired nodes in the network
 totalNodes = int(input())
 hostPort = 8080 # desired start port number
 nodeNum = 1 # starting node number
