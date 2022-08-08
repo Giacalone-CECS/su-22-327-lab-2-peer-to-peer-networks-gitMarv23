@@ -1,2 +1,42 @@
 version: "3.9"
 services:
+ node1:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8080:80"
+ node2:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8081:80"
+ node3:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8082:80"
+ node4:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8083:80"
+ node1:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8080:80"
+ node2:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8081:80"
+ node3:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8082:80"
+ node4:
+  build: ./node
+  command: python3 ./node.py
+  ports:
+   - "8083:80"
