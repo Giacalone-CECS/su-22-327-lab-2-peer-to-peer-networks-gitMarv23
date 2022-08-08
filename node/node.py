@@ -2,10 +2,16 @@ import socket
 from threading import Thread
 import time
 
-def server():
-    HOST = '127.0.0.1' # ip address to run through eth0 port to docker
-    PORT = 80 # desired socket port from docker compose
+def port_scan(port):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.connect(())
 
+
+
+def server():
+    HOST = socket.gethostname() # ip address to run through eth0 port to docker
+    PORT = 80 # desired socket port from docker compose
     # create a new socket using 'with' to avoid having to include 'close()'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT)) # bind to the socket
@@ -22,11 +28,10 @@ def server():
                 conn.sendall(data)
 
 def client ():
-    Host = "127.0.0.1"
-    Port = 80 #The port that the server uses
-
+    HOST_CLI = socket.gethostname()
+    PORT_CLI = 80 #The port that the server uses
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((Host, Port))
+        s.connect((HOST_CLI, PORT_CLI))
         s.sendall(b"Hello, world")
         data = s.recv(1024)
 
