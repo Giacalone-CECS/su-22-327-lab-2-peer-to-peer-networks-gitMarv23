@@ -2,16 +2,16 @@ import socket
 from threading import Thread
 import time
 
-HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
-HOST_CLI = socket.gethostname() # get host name of other machines on the network
-PORT = 80 # desired socket port from docker compose
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
 
-def server(host_srv, port):
+def server():
+    HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
+    PORT = 80 # desired socket port for container
+
     # create a new socket using 'with' to avoid having to include 'close()'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((host_srv, port)) # bind to the socket
+        s.bind((HOST_SRV, PORT)) # bind to the socket
         print('listening for connections')
         s.listen() # listen for any connections
         conn, addr = s.accept() # accept connection request
@@ -24,19 +24,22 @@ def server(host_srv, port):
                     break
                 conn.sendall(data)
 
-def client(host_cli, port):
+def client():
+    HOST_CLI = socket.gethostname() # get host name of other machines on the network
+    PORT = 80 # desired socket port for container
+
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((host_cli, port))
+        s.connect((HOST_CLI, PORT))
         s.sendall(b"Hello, world")
         data = s.recv(1024)
 
     print(f"Received {data!r}")
 
-Thread(target = server(HOST_SRV, PORT)).start()
+Thread(target = server).start()
 
 time.sleep(0.5)
 
-Thread(target = client(HOST_CLI, PORT)).start()
+Thread(target = client).start()
 '''
 # port scanning the network for available servers
 def port_scan(port):
