@@ -17,7 +17,6 @@ def server():
         conn, addr = s.accept() # accept connection request
         with conn:
             print(f"Connected by {addr}")
-            # receive/send loop until communication closure
             while True:
                 data = conn.recv(1024)
                 if not data:
@@ -40,7 +39,7 @@ Thread(target = server).start()
 time.sleep(0.5)
 
 Thread(target = client).start()
-'''
+
 # port scanning the network for available servers
 def port_scan(port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # new socket for scanning
@@ -60,4 +59,4 @@ for port in range(PORT_START, PORT_END + 1):
         print(f'port {port} is closed') # if not found print notice
 
 end = time.time() # end run time calculation
-print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system'''
+print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
