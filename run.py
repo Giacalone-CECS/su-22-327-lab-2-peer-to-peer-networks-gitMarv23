@@ -20,7 +20,7 @@ for i in range(1, (totalNodes + 1)):
 f.close() # close the file
 
 # run docker compose file
-subprocess.run(["docker", "compose", "up"])
+subprocess.run(["docker", "compose", "up", "--build"])
 
 # clean up docker-compose.yml
 f = open('./docker-compose.yml', mode='w') # open file for cleanup
