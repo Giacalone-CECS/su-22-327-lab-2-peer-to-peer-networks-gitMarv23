@@ -3,7 +3,7 @@ from threading import Thread
 import time
 
 HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
-HOST_CLI = socket.gethostname() # get host name of other machines on the network
+HOST_CLI = socket.gethostbyname(HOST_SRV) # get host name of other machines on the network
 PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
@@ -23,12 +23,12 @@ def server(HOST_SRV, PORT):
                     break
                 conn.sendall(data)
 
+# client definition for receiving and sending data
 def client(HOST_CLI, PORT):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST_CLI, PORT))
-        s.sendall(b"Hello, world")
+        s.sendall(b"Hello, world") # sending message in bytes
         data = s.recv(1024)
-
     print(f"Received {data!r}")
 
 Thread(target = server, args=(HOST_SRV, PORT)).start()
