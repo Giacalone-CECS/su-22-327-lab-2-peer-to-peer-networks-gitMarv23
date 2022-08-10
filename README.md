@@ -4,6 +4,13 @@
 
 This project simulates our created distributed peer-to-peer network to operate a mini [Dropbox](https://www.dropbox.com/) as described [here](./INSTR.md). Simply follow the run instructions and ensure you have the necessary dependencies below.
 
+## Features
+- **Node Scalability**
+
+    Do you want 4 nodes, 10 nodes, more??? We have you covered as one of our extensive features.   
+    [4 Nodes](https://user-images.githubusercontent.com/46500443/184038717-ab7ba95d-7101-4b7d-a8ae-ad43d56e675f.mp4)   
+    [10 Nodes](https://user-images.githubusercontent.com/46500443/184038994-1670c91e-90a8-4559-a5a7-23703e002c98.mp4)
+
 ## Dependencies
 
 - [Docker Desktop for your system](https://www.docker.com/get-started/)
