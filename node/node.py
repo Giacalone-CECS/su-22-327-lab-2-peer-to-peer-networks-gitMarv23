@@ -1,13 +1,22 @@
 import socket
 from threading import Thread
 import time
+<<<<<<< HEAD
 import ping3 from ping
+=======
+from ping3 import ping
+
+>>>>>>> ben2
 
 HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
 HOST_CLI = socket.gethostbyname(HOST_SRV) # get host name of other machines on the network
 PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
+
+def ping:
+    for x in range():
+        ""
 
 def server(HOST_SRV, PORT):
     # create a new socket using 'with' to avoid having to include 'close()'
