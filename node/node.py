@@ -11,9 +11,14 @@ PORT_END = 60000 # end number for port scanning
 
 # get total number of nodes in our system
 
-'''def ping():
+ip_address = []
+def ping():
     for x in range():
-        NULL'''
+        ipaddress =  "192.168.240." + str(x)
+        if ping(ipaddress) == True:
+            ip_address.append(ipaddress)
+        else:
+            return False
 
 def server(HOST_SRV, PORT):
     # create a new socket using 'with' to avoid having to include 'close()'
