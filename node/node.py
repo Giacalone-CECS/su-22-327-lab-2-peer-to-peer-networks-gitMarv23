@@ -10,9 +10,10 @@ PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
 
-def ping:
-    for x in range():
-        ""
+def ping():
+    for x in range(20):
+      ipaddress =  "192.168.240." + str(x)
+
 
 def server(HOST_SRV, PORT):
     # create a new socket using 'with' to avoid having to include 'close()'
