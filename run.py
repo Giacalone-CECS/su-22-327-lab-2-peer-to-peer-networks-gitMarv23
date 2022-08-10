@@ -5,6 +5,11 @@ totalNodes = int(input())
 hostPort = 8080 # desired start port number
 nodeNum = 1 # starting node number
 
+# write total nodes in our system to file
+f = open('./node/totalNodes.txt', mode='w')
+print(str(totalNodes), file = f)
+f.close()
+
 f = open('./docker-compose.yml', mode='a')
 
 # edit docker-compose.yml to make node count scalable

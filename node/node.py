@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import socket
 from threading import Thread
 import time
@@ -10,9 +9,11 @@ PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
 
-def ping():
+# get total number of nodes in our system
+
+'''def ping():
     for x in range():
-        NULL
+        NULL'''
 
 def server(HOST_SRV, PORT):
     # create a new socket using 'with' to avoid having to include 'close()'
