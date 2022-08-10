@@ -10,9 +10,9 @@ PORT_START = 30000                          # start port number for scanning
 PORT_END = 60000                            # end number for port scanning
 
 # get total number of nodes in our system
-f = open('./totalNodes.txt', mode='r')
-totalNodes = int(f.read())       # pull total number of nodes
-f.close()
+f = open('./totalNodes.txt', mode='r')  # open corresponding file
+totalNodes = int(f.read())              # pull total number of nodes
+f.close()                               # close file to prevent leak
 
 ip_address = []
 def ping():
