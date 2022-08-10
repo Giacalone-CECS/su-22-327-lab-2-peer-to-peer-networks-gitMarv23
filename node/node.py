@@ -10,42 +10,52 @@ PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
 ip_address = []
-def myping():
-    for x in range(20):
-        ipaddress =  "192.168.240." + str(x)
+m = ""
+print("This is a test line")
+def myping(ip):
+    for x in range():
+        ipaddress = "192.168.240." + str(x)
         if ping(ipaddress) == True:
             ip_address.append(ipaddress)
+            print(ip_address)
         else:
             return False
-    for ip in ip_address:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # new socket for scanning
-        try:
-            s.connect((ip, PORT)) # if socket connects return true
-            return True
-        except:
-            return False
+    # for m in ip_address:
+    #     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # new socket for scanning
+    #     try:
+    #         myping(m)
+    #         s.connect((m, PORT)) # if socket connects return true
+    #         # myping(m)
+    #         return True
+    #     except:
+    #         return False
 
 
 
-def port_scan(port):
+for m in ip_address:
+    if myping(m):
+        print(f'node ip address {m} is found')
+
+
+def port_scan(port,m):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # new socket for scanning
-   try:
-     s.connect((HOST_SRV, PORT)) # if socket connects return true
+    try:
+        myping(m)
+        s.connect((m, PORT)) # if socket connects return true
         return True
-except:
+    except:
         return False
 
-#start = time.time() # start calculating run time
+start = time.time() # start calculating run time
 
 # dictate port scanning based on the normal output from docker compose (ports 30,000 -> 60,000)
 for port in range(PORT_START, (PORT_END + 1)):
-    if port_scan(port):
+    if port_scan(port,m):
         print(f'port {port} is open') # if found print on system
+        print(ip_address)
 
 end = time.time() # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
-
-
 
 
 
@@ -93,7 +103,7 @@ Thread(target = client, args=(HOST_CLI, PORT)).start()
 #
 # # dictate port scanning based on the normal output from docker compose (ports 30,000 -> 60,000)
 for port in range(PORT_START, (PORT_END + 1)):
-    if port_scan(port):
+    if port_scan(port,m):
         print(f'port {port} is open') # if found print on system
 
 end = time.time() # end run time calculation
