@@ -15,11 +15,12 @@ totalNodes = int(f.read())              # pull total number of nodes
 f.close()                               # close file to prevent leak
 
 ip_address = []
-def ping():
-    for x in range():
-        ipaddress =  "192.168.240." + str(x)
-        if ping(ipaddress) == True:
+def myping():
+    for x in range(1, (totalNodes+1)):
+        ipaddress =  "172.18.0." + str(x)
+        if ping(ipaddress):
             ip_address.append(ipaddress)
+            port_scan(ipaddress, PORT)
         else:
             return False
 
@@ -53,20 +54,26 @@ time.sleep(0.5)
 Thread(target = client, args=(HOST_CLI, PORT)).start()
 
 # port scanning the network for available servers
-def port_scan(port):
+def port_scan(ip, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # new socket for scanning
     try:
-        s.connect((HOST_SRV, PORT))                         # if socket connets return true
+        s.connect((ip, port))                         # if socket connets return true
         return True
     except:
         return False
 
 start = time.time() # start calculating run time
 
+myping() # ip address assignment
+for i in ip_address:
+    print("ip address: " + i)
+
 # dictate port scanning based on the normal output from docker compose (ports 30,000 -> 60,000)
-for port in range(PORT_START, (PORT_END + 1)):
-    if port_scan(port):
-        print(f'port {port} is open') # if found print on system
+for i in range(PORT_START, (PORT_END + 1)):
+    if port_scan(ip_address[i-PORT_START], i):
+        print(f'port {i} is open') # if found print on system
+    if len(ip_address) > totalNodes:
+        break
 
 end = time.time()                       # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
