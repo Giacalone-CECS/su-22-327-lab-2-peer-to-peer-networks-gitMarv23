@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 import time
+import ping3 from ping
 
 HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
 HOST_CLI = socket.gethostbyname(HOST_SRV) # get host name of other machines on the network
