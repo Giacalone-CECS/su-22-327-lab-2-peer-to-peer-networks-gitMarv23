@@ -8,7 +8,7 @@ This project simulates our created distributed peer-to-peer network to operate a
 - **Node Scalability**
 
     Do you want 4 nodes, 10 nodes, more??? We have you covered as one of our extensive features.   
-    https://user-images.githubusercontent.com/46500443/184038717-ab7ba95d-7101-4b7d-a8ae-ad43d56e675f.mp4
+    [4 Nodes](https://user-images.githubusercontent.com/46500443/184038717-ab7ba95d-7101-4b7d-a8ae-ad43d56e675f.mp4)
 
 ## Dependencies
 
