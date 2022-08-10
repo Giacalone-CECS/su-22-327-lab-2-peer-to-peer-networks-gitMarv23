@@ -25,8 +25,7 @@ def myping():
 def server(host, port):
     # create a new socket using 'with' to avoid having to include 'close()'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((HOST_SRV, PORT))            # bind to the socket
-        s.bind((host, port))            # bind to the socket
+        s.bind((host, port))                # bind to the socket
         print('listening for connections')
         s.listen()                          # listen for any connections
         conn, addr = s.accept()             # accept connection request
@@ -45,18 +44,13 @@ def client(client, port):
         s.sendall(b"Hello, world") # sending message in bytes
         data = s.recv(1024)
     print(f"Received {data!r}")
-'''
+
 # port scanning the network for available servers
 def port_scan(ip, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # new socket for scanning
-    try:
-        s.connect((ip, port))                         
-        print('connection established')                     # if socket connets print message
-        return True
-    except:
-        print('no connection established')
-        return False
-'''
+    s.connect((ip, port))                         
+    print('connection established')                         # if socket connets print message
+
 Thread(target = server, args=(HOST_SRV, PORT)).start() # start server thread
 time.sleep(0.5)                                        # give a little break
 Thread(target = client, args=(HOST_CLI, PORT)).start() # start client thread
@@ -64,12 +58,12 @@ Thread(target = client, args=(HOST_CLI, PORT)).start() # start client thread
 start = time.time() # start calculating run time
 
 myping() # ip address assignment
-'''
+
 # dictate port scanning based on the normal output from docker compose (ports 30,000 -> 60,000)
 for i in range(0, len(ip_address)):             # scan through our list of ip addresses
-    for j in range(PORT_START, (PORT_END + 1)):
-        if port_scan(ip_address[i], j):         # scan ports at current ip address
-            print(f'port {j} is open')          # if open print on system
-'''
+    #for j in range(PORT_START, (PORT_END + 1)):
+        #if port_scan(ip_address[i], j):         # scan ports at current ip address
+        #    print(f'port {j} is open')          # if open print on system
+    print(ip_address[i])
 end = time.time()                       # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
