@@ -10,7 +10,7 @@ COPY . /home/lab2
 
 # ensure packages are up to date via "cache busting"
 # yes to install python package
-RUN apk update && apk upgrade && apk add python3
+RUN apk update && apk upgrade && apk add python3 && apk add py3-pip && pip install ping3
 
 # set work directory to copied application directory
 WORKDIR /home/lab2
