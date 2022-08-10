@@ -9,10 +9,18 @@ HOST_CLI = socket.gethostbyname(HOST_SRV) # get host name of other machines on t
 PORT = 80 # desired socket port for container
 PORT_START = 30000 # start port number for scanning
 PORT_END = 60000 # end number for port scanning
-
+ip_address = []
 def ping():
-    for x in range(20):
-      ipaddress =  "192.168.240." + str(x)
+    for x in range():
+        ipaddress =  "192.168.240." + str(x)
+        if ping(ipaddress) == True:
+            ip_address.append(ipaddress)
+        else:
+            return False
+
+
+
+
 
 
 def server(HOST_SRV, PORT):
