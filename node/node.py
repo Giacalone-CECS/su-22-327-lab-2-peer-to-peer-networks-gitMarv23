@@ -2,8 +2,17 @@ from asyncio.windows_events import NULL
 import socket
 from threading import Thread
 import time
+<<<<<<< HEAD
 from ping3 import ping
 
+=======
+<<<<<<< HEAD
+import ping3 from ping
+=======
+from ping3 import ping
+
+>>>>>>> ben2
+>>>>>>> 5de6fab4bd246c3c402e4edd157d37c9698b0399
 
 HOST_SRV = socket.gethostname() # ip address to run through eth0 port to docker
 HOST_CLI = socket.gethostbyname(HOST_SRV) # get host name of other machines on the network
