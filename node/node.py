@@ -22,10 +22,11 @@ def myping():
         if ping(ipaddress):
             ip_address.append(ipaddress) # add ip to the list
 
-def server(HOST_SRV, PORT):
+def server(host, port):
     # create a new socket using 'with' to avoid having to include 'close()'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST_SRV, PORT))            # bind to the socket
+        s.bind((host, port))            # bind to the socket
         print('listening for connections')
         s.listen()                          # listen for any connections
         conn, addr = s.accept()             # accept connection request
@@ -38,9 +39,9 @@ def server(HOST_SRV, PORT):
                 conn.sendall(data)
 
 # client definition for receiving and sending data
-def client(HOST_CLI, PORT):
+def client(client, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((HOST_CLI, PORT))
+        s.connect((client, port))
         s.sendall(b"Hello, world") # sending message in bytes
         data = s.recv(1024)
     print(f"Received {data!r}")
