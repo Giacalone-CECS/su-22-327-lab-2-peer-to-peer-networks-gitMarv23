@@ -66,8 +66,6 @@ for i in range(0, len(ip_address)):                                  # scan thro
             result = s.connect_ex((ip_address[i], j))                # error return if found
             if result == 0:
                 print(f"Port {j} is open")
-                # scan file directory
-                # sync files if not in sync
 
 end = time.time()                       # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
