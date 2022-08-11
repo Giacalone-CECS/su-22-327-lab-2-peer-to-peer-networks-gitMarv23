@@ -2,7 +2,6 @@ import socket
 from threading import Thread
 import time
 from ping3 import ping
-import nmap                                 # nmap pypi module to scan our network
 
 HOST_SRV = socket.gethostname()             # ip address to run through eth0 port to docker
 HOST_CLI = socket.gethostbyname(HOST_SRV)   # get host name of other machines on the network
@@ -53,12 +52,6 @@ Thread(target = client, args=(HOST_CLI, PORT)).start() # start client thread
 start = time.time() # start calculating run time
 
 myping() # ip address assignment
-
-# nmap network scan
-nm = nmap.PortScanner()                 # create a new port scanner
-nm.scan('172.17.0.0', '30000-60000')
-hosts = nm.all_hosts()
-print('hosts: ' + hosts)
 
 end = time.time()                       # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
