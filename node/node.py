@@ -18,7 +18,7 @@ f.close()                               # close file to prevent leak
 # pings for an ip on the network and appends the list if found
 def myping():
     for x in range(1, (totalNodes+1)):
-        ipaddress =  "172.20.0." + str(x+1)
+        ipaddress =  "172.18.0." + str(x+1)
         if ping(ipaddress):
             ip_address.append(ipaddress) # add ip to the list
 
