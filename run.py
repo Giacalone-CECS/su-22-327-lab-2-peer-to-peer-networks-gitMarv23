@@ -20,12 +20,15 @@ for i in range(1, (totalNodes + 1)):
 #    print('  command: sh -c /bin/sh', file = f) # test run docker features
     print('  ports:', file = f) # declare ports
     print('   - \"' + str(hostPort) + ':80\"', file = f)
+    print('  volumes:', file=f) #container can interact with my host file directory
+    print('   - ' + './nodes'+ str(nodeNum) + ':' + '/file', file = f) #declare volumes
     nodeNum += 1 # increment
     hostPort += 1 #increment host port for availability
 f.close() # close the file
 
 # run docker compose file
 subprocess.run(["docker", "compose", "up", "--build"])
+
 
 # clean up docker-compose.yml
 f = open('./docker-compose.yml', mode='w') # open file for cleanup

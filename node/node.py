@@ -2,6 +2,7 @@ import socket
 from threading import Thread
 import time
 from ping3 import ping
+import os
 
 HOST_SRV = socket.gethostname()             # ip address to run through eth0 port to docker
 HOST_CLI = socket.gethostbyname(HOST_SRV)   # get host name of other machines on the network
@@ -32,18 +33,62 @@ def server(host, port):
         with conn:
             print(f"Connected by {addr}")
             while True:
-                data = conn.recv(1024)
-                if not data:
+                #Getting the filename size
+                Flns = conn.recv(25).decode('utf-8')
+                if not Flns:
                     break
-                conn.sendall(data)
+                    #converts filesize into int
+                Flns = int(Flns, 2)
+                #Getting the file name
+                fileName = conn.recv(Flns).decode('utf-8')
+                #getting the size of a file
+                filesize = conn.recv(32).decode('utf-8')
+                filesize = int(filesize, 2)
+                filewrite = open(fileName, 'wb')
+                bytesize = 1024
+                while filesize > 0:
+                    if filesize < bytesize:
+                        bytesize = filesize
+                    info = conn.recv(bytesize)
+                    filewrite.write(info)
+                    filesize = filesize - len(info)
+
+                filewrite.close()
+                print("file is received! Thanks")
+
+
+
+
+
 
 # client definition for receiving and sending data
 def client(client, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((client, port))
-        s.sendall(b"Hello, world") # sending message in bytes
-        data = s.recv(1024)
-    print(f"Received {data!r}")
+        for files in os.listdir("/file"):
+            Flns = len(files)
+            Flns = bin(Flns)[2:].zfill(25)
+            s.send(Flns.encode('utf-8'))
+            s.send(files.encode('utf-8'))
+
+            filesize = os.path.getsize("/file/"+ files)
+            filesize = bin(filesize)[2:].zfill(32)
+            s.send(filesize.encode('utf-8'))
+
+            filesend = open("/file/"+ files, 'rb')
+
+            data = filesend.read()
+            s.sendall(data)
+            filesend.close()
+            print("File is sent")
+
+
+
+
+
+    #     s.sendall(b"Hello, world") # sending message in bytes
+    #     data = s.recv(1024)
+    # print(f"Received {data!r}")
 
 # port scanning the network for available servers
 def port_scan(ip, port):
@@ -71,3 +116,6 @@ for i in range(0, len(ip_address)):                                  # scan thro
 
 end = time.time()                       # end run time calculation
 print(f'Elapse Time: {end-start:.2f}s') # print the elapsed time for our system
+
+
+#our file syn program
